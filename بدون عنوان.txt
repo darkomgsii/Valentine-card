@@ -1,0 +1,124 @@
+
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بطاقة هدية عيد الحب</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe6e6;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            width: 300px;
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .answers button {
+            margin: 5px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .answers button:hover {
+            transform: scale(1.1);
+        }
+        .yes-btn {
+            background-color: #ff66b2;
+            color: white;
+        }
+        .no-btn {
+            background-color: #555;
+            color: white;
+        }
+        .response, .hearts, .angry-faces, .kisses {
+            margin-top: 15px;
+            font-size: 22px;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .show {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="question">تصيري مخدتي وننام اليوم سوا؟ 😭</div>
+        <div class="answers">
+            <button class="yes-btn" onclick="handleAnswer('yes')">نعم 😹</button>
+            <button class="no-btn" onclick="handleAnswer('no')">لا</button>
+        </div>
+        <div class="response"></div>
+        <div class="hearts">❤️❤️❤️</div>
+        <div class="angry-faces">😡😡😡</div>
+        <div class="kisses">😘😘😘</div>
+    </div>
+
+    <script>
+        function handleAnswer(answer) {
+            const questionDiv = document.querySelector('.question');
+            const responseDiv = document.querySelector('.response');
+            const heartsDiv = document.querySelector('.hearts');
+            const angryFacesDiv = document.querySelector('.angry-faces');
+            const kissesDiv = document.querySelector('.kisses');
+            const answersDiv = document.querySelector('.answers');
+
+            if (questionDiv.innerText.includes("تصيري مخدتي")) {
+                if (answer === 'yes') {
+                    responseDiv.innerText = "اعرف والله يا دبة أحبج يمجنونة 😭🫂";
+                    heartsDiv.classList.add('show');
+                } else {
+                    angryFacesDiv.classList.add('show');
+                    questionDiv.innerText = "ولة اختاري نعم بلا هبل!";
+                    answersDiv.innerHTML = '<button class="yes-btn" onclick="handleAnswer(\'yes2\')">نعم</button><button class="no-btn" onclick="handleAnswer(\'no2\')">لا</button>';
+                }
+            } else if (questionDiv.innerText.includes("ولة اختاري نعم بلا هبل")) {
+                if (answer === 'yes2') {
+                    responseDiv.innerText = "هههههه أحلى مخدة ممكن أنام معها 😭🫂🫦";
+                    heartsDiv.classList.add('show');
+                } else {
+                    angryFacesDiv.classList.add('show');
+                    questionDiv.innerText = "هه تسون تسون ما علينا. لابسة؟";
+                    answersDiv.innerHTML = '<button class="yes-btn" onclick="handleAnswer(\'yes3\')">نعم</button><button class="no-btn" onclick="handleAnswer(\'no3\')">لا</button>';
+                }
+            } else if (questionDiv.innerText.includes("هه تسون تسون ما علينا. لابسة؟")) {
+                if (answer === 'yes3') {
+                    responseDiv.innerText = "عقبال ألبسك أنا كمان 👽";
+                } else {
+                    kissesDiv.classList.add('show');
+                    responseDiv.innerText = "صوريلي مخدتك واجرك 🫦💕";
+                }
+            }
+
+            if (questionDiv.innerText.includes("صوريلي مخدتك واجرك")) {
+                setTimeout(() => {
+                    document.body.innerHTML = '<div class="prank" style="font-size: 24px; font-weight: bold;">كاميرا مقلب! 😂📸</div>';
+                }, 3000);
+            }
+
+            responseDiv.classList.add('show');
+        }
+    </script>
+</body>
+</html>
